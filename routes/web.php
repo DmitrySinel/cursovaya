@@ -39,6 +39,6 @@ Route::middleware('auth')->group(function() {
     });
 
     Route::prefix('wordtest')->name('wordtest.')->group(function() {
-        Route::get('/{tag}', [App\Http\Controllers\WordTest\IndexController::class, 'index'])->name('index');
+        Route::post('/test', [App\Http\Controllers\WordTest\IndexController::class, 'index'])->name('index');
     });
 });

@@ -22,7 +22,13 @@
         @endforeach
     </div>
     @endif
-    <a href="{{ route('wordtest.index', ['tag' => $tag]) }}">
+    {{-- <a href="{{ route('wordtest.index', ['tag' => $tag, 'answer' => []]) }}">
         <div>Пройти тест</div>
-    </a>
+    </a> --}}
+    <form action="{{ route('wordtest.index', ['tagId' => $tag, 'answer' => array()]) }}" method="POST">
+        @csrf
+        <button type="submit" class="border-0 bg-transparent">
+            Пройти тест
+        </button>
+    </form>
 @endsection
