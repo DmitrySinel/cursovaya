@@ -28,16 +28,18 @@
     @endforeach
 </div>
 
-@if($viewed->count())
-<h1 class="">Ваши просмотры</h1>
-<div class="scroll_container">
-    @foreach ($viewed as $view)
-    <a href="{{ route('word.index', ['word' => $view]) }}">
-        <div class="card">
-            <div>{{ $view->word }}</div>
-        </div>
-    </a>
-    @endforeach
-</div>
-@endif
+@auth
+    @if($viewed->count())
+    <h1 class="">Ваши просмотры</h1>
+    <div class="scroll_container">
+        @foreach ($viewed as $view)
+        <a href="{{ route('word.index', ['word' => $view]) }}">
+            <div class="card">
+                <div>{{ $view->word }}</div>
+            </div>
+        </a>
+        @endforeach
+    </div>
+    @endif
+@endauth
 @endsection

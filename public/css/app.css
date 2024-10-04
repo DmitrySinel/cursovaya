@@ -35,7 +35,31 @@ a {
     background-color: rgb(255, 255, 255);
     padding: 12px 25px;
     border-bottom: 1px solid rgb(185, 185, 185);
+    display: flex;
     z-index: 1;
+}
+.dashboardHeaderNav{
+    width: 90%;
+    position: relative;
+
+    div {
+        float: right;
+    }
+
+    input {
+        background: transparent;
+        border: none;
+        font-family: 'Rubik One', sans-serif;
+        font-size: 18px;
+        text-transform: uppercase;
+        background: #2E2F45;
+        display: table;
+        color: white;
+        border-radius: 5px;
+        mix-blend-mode: multiply;
+        padding: 5px 10px;
+        cursor: pointer;
+      }
 }
 .dashboardHeaderLogo {
     font-family: 'Rubik One', sans-serif;
@@ -183,5 +207,19 @@ a {
     .mobileMenu {
         display: inline-block;
         float: right;
+    }
+}
+
+@media print {
+    .dashboardSidebar, form {
+        visibility: hidden;
+        display: none;
+    }
+    .print {
+        visibility: visible;
+        text-align: center;
+    }
+    @page {
+        margin: 0;
     }
 }

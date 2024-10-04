@@ -13,6 +13,21 @@
         <div class="dashboardHeaderLogo">
             Английский
         </div>
+        <div class="dashboardHeaderNav">
+            @auth
+            <div>
+                <form action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <input type="submit" value="Выйти">
+                </form>
+            </div>
+            @endauth
+            @guest
+            <div class="dashboardHeaderLogo">
+                <a href="{{ route('login') }}">Войти</a>
+            </div>
+            @endguest
+        </div>
     </header>
     <div class="dashboardSidebar">
         <a href="{{ route('main.index') }}" class="dashboardButton">Главная</a>

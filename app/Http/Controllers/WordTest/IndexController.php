@@ -16,8 +16,14 @@ class IndexController extends Controller
         if(isset($request->otv)){
             $answer[$request->word] = $request->otv;
         }
-        if($answer != null && count($answer) == 3) {
-           return view('wordtest.show', ['answers' => $answer]);
+        if($answer != null && count($answer) == 10) {
+            $trueCount = 0;
+            foreach($answer as $item)
+            {
+                if($item == 1)
+                    $trueCount++;
+            }
+           return view('wordtest.show', ['answers' => $answer, 'trueCount' => $trueCount]);
         }
 
         $tagId = $request->tagId;
@@ -36,9 +42,8 @@ class IndexController extends Controller
                 $j++;
             }
         }
+
         $test = ['original' => $word, 'translate' => $translate, 'variants' => $allVariants];
         return view('wordtest.index', ['tagId' => $tagId, 'test' => $test, 'answer' => $answer]);
     }
-
-    // dd($data);
 }
