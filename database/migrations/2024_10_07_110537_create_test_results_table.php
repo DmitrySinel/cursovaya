@@ -1,8 +1,7 @@
 <?php
 
-use App\Enums\StatusEnum;
-use App\Models\WordTag;
-use Hamcrest\Core\HasToString;
+use App\Models\Tag;
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -16,15 +15,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('english_words', function (Blueprint $table) {
+        Schema::create('test_results', function (Blueprint $table) {
             $table->id();
-            $table->string('word');
-            $table->string('transcription');
-            $table->tinyInteger('status')->default(StatusEnum::Suggested);
+            $table->integer('result');
+            $table->foreignIdFor(Tag::class)->constrained();
+            $table->foreignIdFor(User::class)->constrained();
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      *
@@ -32,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('english_words');
+        Schema::dropIfExists('test_results');
     }
 };

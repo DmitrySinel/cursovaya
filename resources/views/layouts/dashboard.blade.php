@@ -15,6 +15,9 @@
         </div>
         <div class="dashboardHeaderNav">
             @auth
+            <div class="dashboardHeaderLogo">
+                <a href="{{ route('home') }}">Аккаунт</a>
+            </div>
             <div>
                 <form action="{{ route('logout') }}" method="POST">
                     @csrf
@@ -31,10 +34,9 @@
     </header>
     <div class="dashboardSidebar">
         <a href="{{ route('main.index') }}" class="dashboardButton">Главная</a>
-        <a href="#" class="dashboardButton">Популярное</a>
-        <a href="{{ route('all.index') }}" class="dashboardButton">Все</a>
+        <a href="{{ route('words.index') }}" class="dashboardButton">Слова</a>
+        <a href="{{ route('tags.index') }}" class="dashboardButton">Теги</a>
         <a href="{{ url()->previous() }}" class="dashboardButton">Назад</a>
-
     </div>
     <div class="dashboardBody">
         @yield('content')

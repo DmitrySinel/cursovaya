@@ -44,6 +44,7 @@ a {
 
     div {
         float: right;
+        margin-right: 5px;
     }
 
     input {
@@ -59,7 +60,7 @@ a {
         mix-blend-mode: multiply;
         padding: 5px 10px;
         cursor: pointer;
-      }
+    }
 }
 .dashboardHeaderLogo {
     font-family: 'Rubik One', sans-serif;

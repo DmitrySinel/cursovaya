@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.dashboard')
 
 @section('content')
 <div class="container">
@@ -19,5 +19,11 @@
             </div>
         </div>
     </div>
+    <div>{{ Auth::user()->name }}</div>
+    <div>{{ Auth::user()->email }}</div>
+    <div>{{ Auth::user()->role }}</div>
+    <div>{{ Auth::user()->userSumResult() }}</div>
+    <div>{{ Auth::user()->userTestCount() }}</div>
+    <div></div>
 </div>
 @endsection

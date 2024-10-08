@@ -23,11 +23,13 @@
             <div>{{ $tag->name }}</div>
         @endforeach
     </div>
-    <form action="{{ route('word.delete', $word) }}" method="POST">
-        @csrf
-        @method('DELETE')
-        <button type="submit">
-            Удалить
-        </button>
-      </form>
+    @if(Auth::user()->role == App\Enums\RoleEnum::Admin)
+        <form action="{{ route('word.delete', $word) }}" method="POST">
+            @csrf
+            @method('DELETE')
+            <button type="submit">
+                Удалить
+            </button>
+        </form>
+    @endif
 @endsection

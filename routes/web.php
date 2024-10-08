@@ -2,18 +2,21 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', 'App\Http\Controllers\MainController@index');
-
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Route::prefix('main')->name('main.')->group(function() {
+Route::name('main.')->group(function() {
     Route::get('/', [App\Http\Controllers\Main\IndexController::class, 'index'])->name('index');
 });
-Route::prefix('all')->name('all.')->group(function() {
-    Route::get('/', [App\Http\Controllers\All\IndexController::class, 'index'])->name('index');
+
+Route::prefix('words')->name('words.')->group(function() {
+    Route::get('/', [App\Http\Controllers\Words\IndexController::class, 'index'])->name('index');
+});
+
+Route::prefix('tags')->name('tags.')->group(function() {
+    Route::get('/', [App\Http\Controllers\Tags\IndexController::class, 'index'])->name('index');
 });
 
 Route::prefix('word')->name('word.')->group(function() {

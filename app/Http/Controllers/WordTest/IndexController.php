@@ -6,13 +6,16 @@ use App\Http\Controllers\Controller;
 use App\Models\EnglishWord;
 use App\Models\RussianWord;
 use App\Models\Tag;
+use App\Models\TestResults;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class IndexController extends Controller
 {
     public function index(Request $request)
     {
         $answer = $request->answer;
+        $tagId = $request->tagId;
         if(isset($request->otv)){
             $answer[$request->word] = $request->otv;
         }
@@ -23,10 +26,10 @@ class IndexController extends Controller
                 if($item == 1)
                     $trueCount++;
             }
-           return view('wordtest.show', ['answers' => $answer, 'trueCount' => $trueCount]);
+            TestResults::create(['result'=>$trueCount, 'tag_id'=>$tagId, 'user_id'=>Auth::user()->id]);
+            return view('wordtest.show', ['answers' => $answer, 'trueCount' => $trueCount]);
         }
 
-        $tagId = $request->tagId;
         $word = Tag::all()->where('id', $tagId)->first()->words->random(1)->first();
 
         $translate = EnglishWord::where("word", $word->word)->first()->translate->first();
