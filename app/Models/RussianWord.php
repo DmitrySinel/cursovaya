@@ -10,4 +10,8 @@ class RussianWord extends Model
     use HasFactory;
 
     protected $guarded = false;
+
+    public function original() {
+        return $this->belongsToMany(EnglishWord::class, 'english_russian_words');
+    }
 }

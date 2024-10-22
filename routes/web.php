@@ -11,17 +11,23 @@ Route::name('main.')->group(function() {
     Route::get('/', [App\Http\Controllers\Main\IndexController::class, 'index'])->name('index');
 });
 
-Route::prefix('words')->name('words.')->group(function() {
-    Route::get('/', [App\Http\Controllers\Words\IndexController::class, 'index'])->name('index');
+Route::prefix('words')->name('word.')->group(function() {
+    Route::get('/', [App\Http\Controllers\Word\IndexController::class, 'index'])->name('index');
+    Route::get('/{word}', [App\Http\Controllers\Word\ShowController::class, 'index'])->name('show');
+    Route::delete('/{word}', [App\Http\Controllers\Word\DeleteController::class, 'index'])->name('delete');
+
+});
+
+Route::prefix('suggest')->name('suggest.')->group(function() {
+    Route::get('/', [App\Http\Controllers\Suggest\IndexController::class, 'index'])->name('index');
+    Route::get('/create', [App\Http\Controllers\Suggest\CreateController::class, 'index'])->name('create');
+    Route::post('/', [App\Http\Controllers\Suggest\StoreController::class, 'index'])->name('store');
+    Route::delete('/{word}', [App\Http\Controllers\Suggest\DeleteController::class, 'index'])->name('delete');
+    Route::patch('/approved/{word}', [App\Http\Controllers\Suggest\ApprovedController::class, 'index'])->name('approved');
 });
 
 Route::prefix('tags')->name('tags.')->group(function() {
     Route::get('/', [App\Http\Controllers\Tags\IndexController::class, 'index'])->name('index');
-});
-
-Route::prefix('word')->name('word.')->group(function() {
-    Route::get('/{word}', [App\Http\Controllers\Word\IndexController::class, 'index'])->name('index');
-    Route::delete('/{word}', [App\Http\Controllers\Word\DeleteController::class, 'index'])->name('delete');
 });
 
 Route::prefix('tag')->name('tag.')->group(function() {

@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers\Word;
 
+use App\Enums\StatusEnum;
 use App\Http\Controllers\Controller;
 use App\Models\EnglishWord;
-use App\Models\WordView;
 
 class IndexController extends Controller
 {
-    public function index(EnglishWord $word)
+    public function index()
     {
-        WordView::createViewLog($word);
-        return view('word.index', compact('word'));
+        $words = EnglishWord::where('status', StatusEnum::Approved)->paginate(81);
+        return view('word.index', compact('words'));
     }
 }

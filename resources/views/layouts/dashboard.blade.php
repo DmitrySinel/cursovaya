@@ -7,8 +7,10 @@
     <link href="https://fonts.cdnfonts.com/css/montserrat" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <title>@yield('title')</title>
+    <link rel="stylesheet" href="{{ asset('js/select2/css/select2.min.css') }}">
 </head>
 <body>
+
     <header class="dashboardHeader">
         <div class="dashboardHeaderLogo">
             Английский
@@ -34,12 +36,29 @@
     </header>
     <div class="dashboardSidebar">
         <a href="{{ route('main.index') }}" class="dashboardButton">Главная</a>
-        <a href="{{ route('words.index') }}" class="dashboardButton">Слова</a>
+        <a href="{{ route('word.index') }}" class="dashboardButton">Слова</a>
         <a href="{{ route('tags.index') }}" class="dashboardButton">Теги</a>
+        <a href="{{ route('suggest.create') }}" class="dashboardButton">Предложить слово</a>
+        @if(auth()->check() && Auth::user()->role == App\Enums\RoleEnum::Admin)
+            <a href="{{ route('suggest.index') }}" class="dashboardButton">Предложенные слова</a>
+        @endif
         <a href="{{ url()->previous() }}" class="dashboardButton">Назад</a>
     </div>
     <div class="dashboardBody">
         @yield('content')
     </div>
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/select2/js/select2.full.min.js') }}"></script>
+    <script>
+        $('.select2').select2({
+            tags: true
+        })
+
+        $('#testForm').on('submit', function(e) {
+            if($('input:checked').length === 0) {
+                e.preventDefault();
+            }
+        });
+    </script>
 </body>
 </html>

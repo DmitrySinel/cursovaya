@@ -7,6 +7,7 @@
 @section('content')
     @foreach ($tags as $tag)
         <div class="wordContainer">
+            @if ($tag->words->count() > 0)
             <a href="{{ route('tag.index', ['tag' => $tag]) }}">
                 <div class="wordCard">
                     <span>
@@ -18,6 +19,7 @@
                     </span>
                 </div>
             </a>
+            @endif
         </div>
     @endforeach
     <div>

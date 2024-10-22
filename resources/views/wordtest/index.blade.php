@@ -5,21 +5,31 @@
 @endsection
 
 @section('content')
+    <script>
+        function preventBack() {
+            window.history.forward();
+        }
 
-<form action="{{ route('wordtest.index', ['tagId' => $tagId, 'answer' => $answer, 'word' => $test['original']->word]) }}" method="POST">
-    @csrf
-    <div class="wordCard">
-        {{ $test["original"]->word }}
-        @foreach ($test["variants"] as $variant)
-        <div>
-            <input type="radio" name="otv" value="{{ $variant->word == $test['translate']->word ? 1 : 0 }}" />
-            <span>{{ $variant->word }}</span>
+        setTimeout("preventBack()", 0);
+        window.onunload = function () { null };
+    </script>
+    <form id="testForm" action="{{ route('wordtest.index', ['tagId' => $tagId, 'answer' => $answer, 'word' => $test['original']->word]) }}" method="POST" class="testContainer">
+        @csrf
+        <div class="head">
+            {{ $test["original"]->word }}
         </div>
-        @endforeach
-    </div>
-    <button type="submit" class="border-0 bg-transparent">
-        Ответить
-    </button>
-</form>
-
+        <div class="answerContainer">
+            @foreach ($test["variants"] as $variant)
+            <div class="asnwer">
+                <input type="radio" name="otv" value="{{ $variant->word == $test['translate']->word ? 1 : 0 }}" />
+                <span>{{ $variant->word }}</span>
+            </div>
+            @endforeach
+            <div class="centerButton">
+                <button type="submit" class="submitButton">
+                    Ответить
+                </button>
+            </div>
+        </div>
+    </form>
 @endsection

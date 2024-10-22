@@ -100,7 +100,7 @@ a {
 }
 .dashboardBody {
     padding-left: 204px;
-    padding-top: 49px;
+    padding-top: 60px;
 }
 
 .wordContainer {
@@ -158,9 +158,31 @@ a {
     height: auto;
     margin: 10px;
     padding: 10px;
-    font-size: 30px;
+    font-size: 40px;
+    background-color: rgb(230, 229, 229);
+    border-radius: 5px;
+}
+
+.substrate {
+    width: calc(100%-20px);
+    height: auto;
+    margin: 2% 8%;
+    padding: 2%;
     background-color: white;
     border-radius: 5px;
+
+    .informationContainer {
+        width: auto;
+        height: auto;
+        padding: 10px;
+        background-color: rgb(230, 229, 229);
+        border-radius: 5px;
+        font-size: 24pt;
+    }
+
+    .informationContainer:not(:last-child) {
+        margin-bottom: 10px;
+    }
 }
 
 .scroll_container {
@@ -182,20 +204,31 @@ a {
         font-size: 16pt;
         color: black;
     }
+    .card2 {
+        display: inline-block;
+        margin-left: 4px;
+        margin-top: 12px;
+        padding: 15px;
+        border-radius: 5px;
+        background-color: rgb(230, 229, 229);
+        font-size: 16pt;
+        color: black;
+
+    }
 
 }
 .scroll_container::-webkit-scrollbar {
     width: 12px;               /* ширина scrollbar */
     height: 8px;
 }
-.scroll_container::-webkit-scrollbar-track {
-    background: rgb(230, 229, 229);        /* цвет дорожки */
-}
 .scroll_container::-webkit-scrollbar-thumb {
-    background-color: white;    /* цвет плашки */
+    background-color: rgb(189, 189, 189);    /* цвет плашки */
     border-radius: 20px;       /* закругления плашки */
 }
 
+/* .select2 {
+    width: 250px;
+} */
 
 @media screen and (max-width: 600px) {
     header {
@@ -223,4 +256,139 @@ a {
     @page {
         margin: 0;
     }
+}
+
+.table {
+	width: 100%;
+	margin-bottom: 20px;
+	border: 1px solid #929292;
+	border-collapse: collapse;
+    th {
+        font-weight: bold;
+        padding: 5px;
+        background: #949494;
+        border: 1px solid #dddddd;
+    }
+    td {
+        border: 1px solid #dddddd;
+        background-color: white;
+        padding: 5px;
+    }
+    a {
+        color: black;
+    }
+}
+
+.submitButton {
+    width: auto;
+    height: auto;
+    padding: 10px;
+    margin-top: 10px;
+    font-size: 15pt;
+    background-color: rgb(230, 229, 229);
+    border: 2px solid rgb(230, 229, 229);
+    border-radius: 8px;
+}
+button:hover {
+    opacity: 0.9;
+    cursor: pointer;
+}
+
+.testContainer {
+    width: auto;
+    height: auto;
+    margin: 2% 15%;
+    background-color: white;
+    border-radius: 5px;
+
+    .head {
+        width: 100%;
+        height: auto;
+        background-color: #2E2F45;
+        border-radius: 5px;
+        padding-top: 2%;
+        padding-bottom: 2%;
+        font-size: 34pt;
+        color: white;
+        text-align: center;
+    }
+
+    .answerContainer {
+        padding: 2%;
+
+        .asnwer {
+            background-color: rgb(230, 229, 229);
+            border-radius: 8px;
+            padding: 2%;
+            font-size: 30pt;
+        }
+        .asnwer:not(:last-child) {
+            margin-bottom: 10px;
+        }
+        input[type=radio] {
+            border: 0px;
+            width: 30pt;
+            height: 2em;
+        }
+        .submitButton {
+            font-size: 20pt;
+        }
+    }
+}
+.centerButton {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.authForm {
+    width: auto;
+    height: auto;
+    margin-left: 20%;
+    margin-right: 20%;
+
+    input {
+        width: 100%;
+        padding: 1% 2%;
+        font-size: 28pt;
+    }
+    input:not(:last-child) {
+        margin-bottom: 10px;
+    }
+    label {
+        padding: 1% 2%;
+        font-size: 28pt;
+    }
+    .rememberMe{
+        font-size: 12pt;
+    }
+    input[type=checkbox] {
+        border: 0px;
+        width: 12pt;
+    }
+    a {
+        color: black;
+    }
+    button {
+        margin: 2%;
+    }
+}
+
+.select2 {
+    width: 104%;
+    font-size: 28pt;
+}
+.select2:not(:last-child) {
+    margin-bottom: 10px;
+}
+.select2-selection__rendered {
+    line-height: 38px !important;
+}
+.select2-container .select2-selection--single {
+    height: auto !important;
+    padding: 1% 2%;
+}
+.select2-selection__arrow {
+    height: 34px !important;
 }

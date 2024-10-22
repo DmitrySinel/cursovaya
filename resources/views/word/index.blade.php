@@ -1,35 +1,26 @@
 @extends('layouts.dashboard')
 
 @section('title')
-    Слово - {{ $word->word }}
+    Все слова
 @endsection
 
 @section('content')
-    <div class="wordHead">
-        {{ $word->word }}
-    </div>
+    @foreach ($words as $word)
+        <div class="wordContainer">
+            <a href="{{ route('word.show', ['word' => $word]) }}">
+                <div class="wordCard">
+                    <span>
+                        {{ $word->word }}
+                    </span>
+                    <br>
+                    <span>
+                        {{ \Illuminate\Support\Str::limit($word->translate->first()->word, 10) }}
+                    </span>
+                </div>
+            </a>
+        </div>
+    @endforeach
     <div>
-        {{ $word->transcription }}
+        {{ $words->links('pagination::bootstrap-4') }}
     </div>
-    <div>
-        <ul>
-            @foreach ($word->translate as $translate)
-                <li>{{ $translate->word }}</li>
-            @endforeach
-        </ul>
-    </div>
-    <div>
-        @foreach ($word->tag as $tag)
-            <div>{{ $tag->name }}</div>
-        @endforeach
-    </div>
-    @if(Auth::user()->role == App\Enums\RoleEnum::Admin)
-        <form action="{{ route('word.delete', $word) }}" method="POST">
-            @csrf
-            @method('DELETE')
-            <button type="submit">
-                Удалить
-            </button>
-        </form>
-    @endif
 @endsection

@@ -5,27 +5,28 @@
 @endsection
 
 @section('content')
-    <div class="wordHead">
-        {{ $tag->name }}
-    </div>
-    <div>
-        {{ $tag->words->count() }}
-    </div>
-    @if($examplesTag->count())
-    <div class="scroll_container">
-        @foreach ($examplesTag as $word)
-        <a href="{{ route('word.index', ['word' => $word]) }}">
-            <div class="card">
-                <div>{{ $word->word }}</div>
+    <div class="substrate">
+        <div class="wordHead">
+            {{ $tag->name }} - {{ $tag->words->count() }}
+        </div>
+        @if($examplesTag->count())
+            <div class="scroll_container">
+                @foreach ($examplesTag as $word)
+                <a href="{{ route('word.show', ['word' => $word]) }}">
+                    <div class="card2">
+                        <div>{{ $word->word }}</div>
+                    </div>
+                </a>
+                @endforeach
             </div>
-        </a>
-        @endforeach
+        @endif
+        @if($tag->words->count() > 9)
+            <form action="{{ route('wordtest.index', ['tagId' => $tag, 'answer' => array()]) }}" method="POST">
+                @csrf
+                <button type="submit" class="submitButton">
+                    Пройти тест
+                </button>
+            </form>
+        @endif
     </div>
-    @endif
-    <form action="{{ route('wordtest.index', ['tagId' => $tag, 'answer' => array()]) }}" method="POST">
-        @csrf
-        <button type="submit" class="border-0 bg-transparent">
-            Пройти тест
-        </button>
-    </form>
 @endsection
