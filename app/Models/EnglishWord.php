@@ -28,4 +28,8 @@ class EnglishWord extends Model
     {
         return $this->hasMany(WordView::class);
     }
+
+    public static function getTranslate(string $word){
+        return EnglishWord::where('word', $word)->first()->translate->first()->word;
+    }
 }

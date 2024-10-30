@@ -245,7 +245,7 @@ a {
 }
 
 @media print {
-    .dashboardSidebar, form {
+    .dashboardSidebar, form, .submitButton {
         visibility: hidden;
         display: none;
     }
@@ -277,7 +277,14 @@ a {
     a {
         color: black;
     }
+    .asnwerRight {
+        background-color: rgb(75, 170, 83);
+    }
+    .asnwerWrong {
+        background-color: rgb(170, 75, 75);
+    }
 }
+
 
 .submitButton {
     width: auto;
@@ -288,6 +295,7 @@ a {
     background-color: rgb(230, 229, 229);
     border: 2px solid rgb(230, 229, 229);
     border-radius: 8px;
+    cursor: pointer;
 }
 button:hover {
     opacity: 0.9;
@@ -311,6 +319,13 @@ button:hover {
         font-size: 34pt;
         color: white;
         text-align: center;
+        -webkit-touch-callout: none; /* iOS Safari */
+        -webkit-user-select: none; /* Safari */
+        -khtml-user-select: none; /* Konqueror HTML */
+        -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+        user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
     }
 
     .answerContainer {

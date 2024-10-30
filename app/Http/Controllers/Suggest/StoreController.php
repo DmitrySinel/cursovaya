@@ -37,7 +37,6 @@ class StoreController extends Controller
             DB::commit();
         } catch(\Exception $exeption) {
             DB::rollBack();
-            dd($exeption);
             abort(500);
         }
         return redirect()->route('main.index');

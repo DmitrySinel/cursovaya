@@ -22,13 +22,15 @@
                 <tr>
                     <th>Номер</th>
                     <th>Слово</th>
+                    <th>Перевод</th>
                     <th>Ответ</th>
                 </tr>
                 @foreach ($answers as $key => $answer)
                 <tr>
                     <td>{{ $loop->index + 1}}</td>
                     <td>{{ $key }}</td>
-                    <td>{{ $answer == 1 ? 'Правильно' : 'Неправильно' }}</td>
+                    <td>{{ App\Models\EnglishWord::getTranslate($key) }}</td>
+                    <td class="{{ $answer == 1 ? 'asnwerRight' : 'asnwerWrong' }}">{{ $answer == 1 ? 'Правильно' : 'Неправильно' }}</td>
                 </tr>
                 @endforeach
             </table>

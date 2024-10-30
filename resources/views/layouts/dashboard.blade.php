@@ -13,7 +13,7 @@
 
     <header class="dashboardHeader">
         <div class="dashboardHeaderLogo">
-            Английский
+            <a href="{{ route('main.index') }}">Английский</a>
         </div>
         <div class="dashboardHeaderNav">
             @auth

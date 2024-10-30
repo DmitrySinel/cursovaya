@@ -24,7 +24,9 @@
         <label>Теги</label>
         <select name="tag_ids[]" class="select2" multiple>
             @foreach ($tags as $tag)
-                <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                @if($tag->words->count() > 0)
+                    <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                @endif
             @endforeach
         </select><br>
         @error('tag_ids')
