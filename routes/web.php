@@ -20,7 +20,7 @@ Route::prefix('words')->name('word.')->group(function() {
 
 Route::prefix('suggest')->name('suggest.')->group(function() {
     Route::get('/', [App\Http\Controllers\Suggest\IndexController::class, 'index'])->name('index');
-    Route::get('/create', [App\Http\Controllers\Suggest\CreateController::class, 'index'])->name('create');
+    Route::get('/create', [App\Http\Controllers\Suggest\CreateController::class, 'index'])->name('create')->middleware('auth');
     Route::post('/', [App\Http\Controllers\Suggest\StoreController::class, 'index'])->name('store');
     Route::delete('/{word}', [App\Http\Controllers\Suggest\DeleteController::class, 'index'])->name('delete');
     Route::patch('/approved/{word}', [App\Http\Controllers\Suggest\ApprovedController::class, 'index'])->name('approved');

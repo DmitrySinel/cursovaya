@@ -38,11 +38,12 @@
         <a href="{{ route('main.index') }}" class="dashboardButton">Главная</a>
         <a href="{{ route('word.index') }}" class="dashboardButton">Слова</a>
         <a href="{{ route('tags.index') }}" class="dashboardButton">Теги</a>
-        <a href="{{ route('suggest.create') }}" class="dashboardButton">Предложить слово</a>
+        @auth
+            <a href="{{ route('suggest.create') }}" class="dashboardButton">Предложить слово</a>
+        @endauth
         @if(auth()->check() && Auth::user()->role == App\Enums\RoleEnum::Admin)
             <a href="{{ route('suggest.index') }}" class="dashboardButton">Предложенные слова</a>
         @endif
-        <a href="{{ url()->previous() }}" class="dashboardButton">Назад</a>
     </div>
     <div class="dashboardBody">
         @yield('content')
